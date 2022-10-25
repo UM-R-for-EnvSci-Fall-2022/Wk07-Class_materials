@@ -355,7 +355,7 @@ depth_data %>%
 
 ```
 
-There is a last option, when we want to include fixed lines (e.g. for a reference level). for this we use `geom_vline()`
+There are two last options, when we want to include fixed lines (e.g. for a reference level). for this we use `geom_vline()`
 
 
 ```{r}
@@ -383,6 +383,23 @@ depth_data %>%
   scale_x_log10()
 
 ```
+
+
+Finally the `geom_abline()` which allow us to create a line between two points (hence the A B Line), or to provide an intercept and a slope to plot a line. Very usefult to set a 1:1 line for something like a QQ-Plot
+
+
+```{r geom_abline()}
+
+tibble(x = seq(from = 1, to = 10, by = 1),
+       y = seq(from = 1, to = 10, by = 1)) %>% 
+ggplot() +
+  geom_point(aes(x = x, y = y)) +
+  geom_abline(aes(intercept = 0, slope = 1)) +
+  geom_abline(aes(intercept = 2, slope = 0.5), linetype = "dashed")
+  
+
+```
+
 
 
 # discrete vs continus scales
